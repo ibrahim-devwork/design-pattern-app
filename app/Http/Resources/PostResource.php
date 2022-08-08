@@ -18,6 +18,7 @@ class PostResource extends JsonResource
             'id'    => $this->id,
             'title' => $this->title,
             'body'  => $this->body,
+            'image' => $this->image,
             'comments' => $this->whenLoaded('comments')
         ];
     }

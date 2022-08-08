@@ -17,4 +17,22 @@ class PostRepository extends BaseRepository implements InterfacePostRepository{
         return $this->model->filter($filter)->paginate(Helper::count_per_page);
     }
 
+    public function create($data) {
+        $post           = new $this->model;
+        $post->title    = $data['title'];
+        $post->body     = $data['body'];
+        $post->image    = isset($data['image']) ? Helper::saveFile($data['image'], 'posts') : null;
+        $post->save();
+        return $post;
+    }
+
+    public function update($id, $data) {
+        $post           = $this->model->find($id);
+        $post->title    = $data['title'];
+        $post->body     = $data['body'];
+        $post->image    = isset($data['image']) ? Helper::saveFile($data['image'], 'posts') : null;
+        $post->save();
+        return $post;
+    }
+
 }
