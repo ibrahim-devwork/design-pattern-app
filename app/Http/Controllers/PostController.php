@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function index() {
         try {
-            return PostResource::collection( $this->postRepository->getAll(['*'], ['comments'], true) );
+            return PostResource::collection( $this->postRepository->getAll(['*'], ["comments"], true) );
         } catch(\Exception $error) {
             Log::error('PostController - (index) : ' . $error->getMessage());
         }

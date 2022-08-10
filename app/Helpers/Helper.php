@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class  Helper {
@@ -11,8 +12,8 @@ class  Helper {
     // Static functions
     public static function saveFile($image, $folder_name) {
         if(isset($image) && is_file($image)) {
-            $image      = $image;
-            $imageName  = time() . Str::random(5) . '.' . $image->getClientOriginalExtension();
+            $imageName  = Carbon::now()->format('Ymd-His-u') ."-". Str::random(5);
+            $imageName  = $imageName .'.'. $image->getClientOriginalExtension();
             $destinationPath = public_path('images/'. $folder_name .'/');
             $image->move($destinationPath, $imageName);
             return $imageName;
