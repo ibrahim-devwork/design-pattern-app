@@ -12,7 +12,7 @@ class  Helper {
     // Static functions
     public static function saveFile($image, $folder_name) {
         if(isset($image) && is_file($image)) {
-            $imageName  = Carbon::now()->format('Ymd-His-u') ."-". Str::random(5);
+            $imageName  = now()->format('Ymd-His-u-') . Str::random(3);
             $imageName  = $imageName .'.'. $image->getClientOriginalExtension();
             $destinationPath = public_path('images/'. $folder_name .'/');
             $image->move($destinationPath, $imageName);
