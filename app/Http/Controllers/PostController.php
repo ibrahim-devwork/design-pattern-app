@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Global_Exception;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -20,7 +21,7 @@ class PostController extends Controller
 
     public function index() {
         try {
-            return PostResource::collection($this->postRepository->getAll(['*'], ['comments']));
+            return PostResource::collection( $this->postRepository->getAll(['*'], ['comments'], true) );
         } catch(\Exception $error) {
             Log::error('PostController - (index) : ' . $error->getMessage());
         }
@@ -47,7 +48,7 @@ class PostController extends Controller
         try {
             $data = $request->validated();
             $this->postRepository->create($data);
-            return response()->json(['message' => "Your post has been created successfully."], 201);
+            return response()->json(['message' => "Your post has been created successfully."], Global_Exception::HTTP_CREATED);
         } catch(\Exception $error) {
             Log::error('PostController - (store) : ' . $error->getMessage());
         }
@@ -57,7 +58,7 @@ class PostController extends Controller
         try {
             $data = $request->validated();
             $this->postRepository->update($id, $data);
-            return response()->json(['message' => "Your post has been updated successfully."], 200);
+            return response()->json(['message' => "Your post has been updated successfully."], Global_Exception::HTTP_SUCCESS);
         } catch(\Exception $error) {
             Log::error('PostController - (update) : ' . $error->getMessage());
         }
@@ -66,7 +67,7 @@ class PostController extends Controller
     public function delete($id, PostRequest $request) {
         try {
             $this->postRepository->delete($id);
-            return response()->json(['message' => "Your post has been deleted successfully."], 200);
+            return response()->json(['message' => "Your post has been deleted successfully."], Global_Exception::HTTP_SUCCESS);
         } catch(\Exception $error) {
             Log::error('PostController - (delete) : ' . $error->getMessage());
         }
