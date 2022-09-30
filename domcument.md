@@ -1,8 +1,8 @@
-## Create migration in specific folder
-  php artisan make:migration create_posts_table --path=/database/migrations/folder_name
+## - Create migration in specific folder
+ - **php artisan make:migration create_posts_table --path=/database/migrations/folder_name**
 
 ## Run migrations in the all folders
-  php artisan migrate --path=/database/migrations/*
+ - **php artisan migrate --path=/database/migrations/***
 
 ## Run migrations in specific folder
   php artisan migrate --path=/database/migrations/folder_name
