@@ -5,15 +5,15 @@
  - **php artisan migrate --path=/database/migrations/***
 
 ## Run migrations in specific folder
-  php artisan migrate --path=/database/migrations/folder_name
+  - **php artisan migrate --path=/database/migrations/folder_name**
 
 ## Rollback specific folder migrations
-  php artisan migrate:rollback --path=/database/migrations/folder_name
+  - **php artisan migrate:rollback --path=/database/migrations/folder_name**
  
 ## Rollback last one migration in specific folder
-  php artisan migrate:rollback --step=1 --path=/database/migrations/folder_name
+  - **php artisan migrate:rollback --step=1 --path=/database/migrations/folder_name**
 
 ## Rollback migrations in the all fodlers
-  php artisan migrate:rollback --path=/database/migrations/*
+  - **php artisan migrate:rollback --path=/database/migrations/***
 
 ## ------------------------------------------------------------------------------------------------
