@@ -1,3 +1,4 @@
+### - Migrations :
 ## - Create migration in specific folder
  - **php artisan make:migration create_posts_table --path=/database/migrations/folder_name**
 
@@ -15,5 +16,5 @@
 
 ## - Rollback migrations in the all fodlers
   - **php artisan migrate:rollback --path=/database/migrations/***
+------------------------------------------------------------------
 
-## ------------------------------------------------------------------------------------------------
