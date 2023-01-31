@@ -1,1 +1,1 @@
-# Bind repository method
+# Bind repository method with RepositoryServiceProvider
